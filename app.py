@@ -22,6 +22,7 @@ def add():
   s='''INSERT INTO students(studentName, email) VALUES('{}','{}');'''.format(name,email)
   cur.execute(s)
   mysql.connection.commit()
+  return '{"Result":"Success"}'
 
 @app.route("/delete") #Add Student
 def delete():
