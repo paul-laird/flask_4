@@ -23,7 +23,11 @@ def add():
   cur.execute(s)
   mysql.connection.commit()
 
-  return '{"Result":"Success"}'
+@app.route("/delete") #Add Student
+def delete():
+  return '{"Result":"Not Yet Implemented"}'
+
+
 @app.route("/") #Default - Show Data
 def hello(): # Name of the method
   cur = mysql.connection.cursor() #create a connection to the SQL instance
