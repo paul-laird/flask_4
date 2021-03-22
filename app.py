@@ -22,11 +22,19 @@ def add():
   s='''INSERT INTO students(studentName, email) VALUES('{}','{}');'''.format(name,email)
   cur.execute(s)
   mysql.connection.commit()
-  return '{"Result":"Success"}'
-
+  ret=app.response_class(
+    response=json.dumps({'Result':'Success'}),
+    status=200,
+    mimetype='application/json'
+  )
+  return ret
 @app.route("/delete") #Add Student
 def delete():
   return '{"Result":"Not Yet Implemented"}'
+
+@app.route("/whatever")
+def whatever():
+  return "Someone said whatever?"
 
 
 @app.route("/") #Default - Show Data
@@ -49,4 +57,5 @@ def hello(): # Name of the method
   )
   return ret #Return the data in a string format
 if __name__ == "__main__":
-  app.run(host='0.0.0.0',port='8080', ssl_context=('cert.pem', 'privkey.pem')) #Run the flask app at port 8080
+  app.run(host='0.0.0.0',port='8080') #Run the flask app at port 8080
+  #app.run(host='0.0.0.0',port='8080', ssl_context=('cert.pem', 'privkey.pem')) #Run the flask app at port 8080
